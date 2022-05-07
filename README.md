@@ -44,12 +44,14 @@ ADCS relay：https://pentestlab.blog/2021/09/14/petitpotam-ntlm-relay-to-ad-cs/
 
 PrivExchange原理：https://dirkjanm.io/abusing-exchange-one-api-call-away-from-domain-admin/
 PrivExchange的github地址：https://github.com/dirkjanm/PrivExchange
+DNSAdmin到域控：https://adsecurity.org/?p=4064
 
 
 ## 六、通过获取域控制器的localgroup中特权组成员的权限来获取域控权限
 
 企业为了保证域控中的最小权限原则，通常会在域控制器的localgroup中授予一些域用户特殊权限，方便不同人员使用域中的不同能力。比如localgroup中的backup operators组中的成员能对域控进行备份，也就能直接导出域控的SAM数据库，从而获取域管hash。
 
+Backup Operators组成员权限到域控权限：https://github.com/mpgn/BackupOperatorToDA
 
 
 ## 七、通过委派来获取域控权限
