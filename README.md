@@ -43,7 +43,9 @@ ADCS relay：https://pentestlab.blog/2021/09/14/petitpotam-ntlm-relay-to-ad-cs/
 与域控强相关的系统中，最容易想到的就是Exchange服务器。Exchange服务器具有域控的DCSync权限，通过Exchange的RCE控制Exchange后，也可以直接dump域控中域管的hash，实现对域控的控制。如果获取不到Exchange权限，也可以通过Exchange的http 的NTLM中继到域控实现域内权限提升（PrivExchange，但是目前已经修复）。DNS服务器中的DNS admin用户也能让域控远程加载自定义的dll文件，从而实现对域控的控制。
 
 PrivExchange原理：https://dirkjanm.io/abusing-exchange-one-api-call-away-from-domain-admin/
+
 PrivExchange的github地址：https://github.com/dirkjanm/PrivExchange
+
 DNSAdmin到域控：https://adsecurity.org/?p=4064
 
 
@@ -58,6 +60,8 @@ Backup Operators组成员权限到域控权限：https://github.com/mpgn/BackupO
 
 在windows域中，有一些服务，需要在其他服务器中执行用户的一些权限，此服务器中的服务账户就会被设置为委派。而如果服务账户被设置为非约束委派，则可通过此服务账户直接获取到域控的权限。
 
+委派相关攻击：https://shu1l.github.io/2020/08/05/kerberos-yu-wei-pai-gong-ji-xue-xi/
+
 ## 八、通过域控运维堡垒机
 
 通常在大型企业中，生产网和办公网直接都有隔离，运维人员需要通过堡垒机来对生产网的服务器进行管理。当域控运维人员的堡垒机和其他用户的堡垒机隔离偏弱时，攻击人员也可以通过堡垒机之间的横向移动来控制域控运维人员的堡垒机，从而实现对域控的控制。
@@ -69,6 +73,8 @@ Backup Operators组成员权限到域控权限：https://github.com/mpgn/BackupO
 ## 十、通过与域控相关的web服务器
 
 在大型企业中，企业运维人员，为了方便域控及其他重要服务器的管理和将自己的能力对公司内部其他部门提供相关服务，需要通过一个web平台来使用域控中的一些功能，或对域控进行管理。因此，会在web中配置与域控相关的信息，会直接与域控进行连接，可以通过在这种web系统中的一些越权或者RCE漏洞来实现对域控的控制。
+
+从xxe到域控：https://blog.ateam.qianxin.com/post/zhe-shi-yi-pian-bu-yi-yang-de-zhen-shi-shen-tou-ce-shi-an-li-fen-xi-wen-zhang/#4-xxe-to-%E5%9F%9F%E6%8E%A7
 
 
 
