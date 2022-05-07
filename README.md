@@ -74,7 +74,7 @@ Backup Operators组成员权限到域控权限：https://github.com/mpgn/BackupO
 
 在大型企业中，企业运维人员，为了方便域控及其他重要服务器的管理和将自己的能力对公司内部其他部门提供相关服务，需要通过一个web平台来使用域控中的一些功能，或对域控进行管理。因此，会在web中配置与域控相关的信息，会直接与域控进行连接，可以通过在这种web系统中的一些越权或者RCE漏洞来实现对域控的控制。
 
-从xxe到域控：https://blog.ateam.qianxin.com/post/zhe-shi-yi-pian-bu-yi-yang-de-zhen-shi-shen-tou-ce-shi-an-li-fen-xi-wen-zhang/#4-xxe-to-%E5%9F%9F%E6%8E%A7
+此攻击思路可以参考ateam的从xxe到域控：https://blog.ateam.qianxin.com/post/zhe-shi-yi-pian-bu-yi-yang-de-zhen-shi-shen-tou-ce-shi-an-li-fen-xi-wen-zhang/#4-xxe-to-%E5%9F%9F%E6%8E%A7
 
 
 
