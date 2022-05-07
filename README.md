@@ -7,9 +7,13 @@
 此思路主要针对域控补丁没有打完整，导致能直接进行域提权漏洞攻击。一般出现在一些安全情报偏弱、补丁更新不频繁的中小公司或者大公司的测试环境。主要是通过MS14068、zerologon、nopac等相关漏洞来直接攻击域控，或者GPP这种能直接获取域管密码的漏洞来直接获取域控权限。
 
 MS14068：https://www.anquanke.com/post/id/172900
+
 NoPAC漏洞利用：https://exploit.ph/cve-2021-42287-cve-2021-42278-weaponisation.html
+
 NoPAC漏洞检测：https://www.trustedsec.com/blog/an-attack-path-mapping-approach-to-cves-2021-42287-and-2021-42278/
+
 zerologon漏洞相关：https://blog.zsec.uk/zerologon-attacking-defending/
+
 GPP漏洞：https://cloud.tencent.com/developer/article/1842866
 
 ## 二、通过域内的中继
