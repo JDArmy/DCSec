@@ -38,9 +38,9 @@ ADCS relay：https://pentestlab.blog/2021/09/14/petitpotam-ntlm-relay-to-ad-cs/
 
 上面几种方法主要是存在中小公司或者大公司的测试环境等安全能力和安全意识偏弱的目标。在大型企业中，域控能自动化打补丁，无法直接通过1day漏洞直接攻击域控，有经验的运维人员也会对高权限账户登陆的服务器进行收敛，直接攻击域控难度过高，于是将目标改为与域控强相关的系统、人员、账户。下面几种是与域控强相关的攻击目标。
 
-## 五、通过攻击Exchange服务器、DNS服务器等
+## 五、通过攻击Exchange服务器、DNS服务器、WSUS服务器等
 
-与域控强相关的系统中，最容易想到的就是Exchange服务器。Exchange服务器具有域控的DCSync权限，通过Exchange的RCE控制Exchange后，也可以直接dump域控中域管的hash，实现对域控的控制。如果获取不到Exchange权限，也可以通过Exchange的http 的NTLM中继到域控实现域内权限提升（PrivExchange，但是目前已经修复）。DNS服务器中的DNS admin用户也能让域控远程加载自定义的dll文件，从而实现对域控的控制。
+与域控强相关的系统中，最容易想到的就是Exchange服务器。Exchange服务器具有域控的DCSync权限，通过Exchange的RCE控制Exchange后，也可以直接dump域控中域管的hash，实现对域控的控制。如果获取不到Exchange权限，也可以通过Exchange的http 的NTLM中继到域控实现域内权限提升（PrivExchange，但是目前已经修复）。DNS服务器中的DNS admin用户也能让域控远程加载自定义的dll文件，从而实现对域控的控制。如果获取了WSUS服务器权限，也可以通过发布windows更新来获取域控权限。
 
 PrivExchange原理：https://dirkjanm.io/abusing-exchange-one-api-call-away-from-domain-admin/
 
