@@ -40,13 +40,18 @@ ADCS relay：https://pentestlab.blog/2021/09/14/petitpotam-ntlm-relay-to-ad-cs/
 
 ## 五、通过攻击Exchange服务器、DNS服务器、SCCM服务器、WSUS服务器等
 
-与域控强相关的系统中，最容易想到的就是Exchange服务器。Exchange服务器具有域控的DCSync权限，通过Exchange的RCE控制Exchange后，也可以直接dump域控中域管的hash，实现对域控的控制。如果获取不到Exchange权限，也可以通过Exchange的http 的NTLM中继到域控实现域内权限提升（PrivExchange，但是目前已经修复）。DNS服务器中的DNS admin用户也能让域控远程加载自定义的dll文件，从而实现对域控的控制。如果获取了SCCM或者WSUS服务器权限，可以直接在上面获取到域管的hash，从而控制域控。
+与域控强相关的系统中，最容易想到的就是Exchange服务器。Exchange服务器具有域控的DCSync权限，通过Exchange的RCE控制Exchange后，也可以直接dump域控中域管的hash，实现对域控的控制。如果获取不到Exchange权限，也可以通过Exchange http的NTLM中继到域控实现域内权限提升（PrivExchange，但是目前已经修复）。DNS服务器中的DNS admin用户也能让域控远程加载自定义的dll文件，从而实现对域控的控制。在SCCM和WSUS服务器中，如果获取到域管hash，则可直接登录域控，如果hash无法登录域控，WSUS服务器则可以直接向域控下发恶意补丁来获取域控权限，SCCM服务器则可以向域控下发恶意应用程序来获取权限。
 
 PrivExchange原理：https://dirkjanm.io/abusing-exchange-one-api-call-away-from-domain-admin/
 
 PrivExchange的github地址：https://github.com/dirkjanm/PrivExchange
 
 DNSAdmin到域控：https://adsecurity.org/?p=4064
+
+WSUS到域控：https://labs.nettitude.com/blog/introducing-sharpwsus/
+
+SCCM到域控：https://labs.nettitude.com/blog/introducing-malsccm/
+
 
 
 ## 六、通过获取域控制器的localgroup中特权组成员的权限来获取域控权限
