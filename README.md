@@ -12,6 +12,8 @@ NoPAC漏洞利用：https://exploit.ph/cve-2021-42287-cve-2021-42278-weaponisati
 
 NoPAC漏洞检测：https://www.trustedsec.com/blog/an-attack-path-mapping-approach-to-cves-2021-42287-and-2021-42278/
 
+NoPAC检测工具的github地址：https://github.com/knightswd/NoPacScan
+
 zerologon漏洞相关：https://blog.zsec.uk/zerologon-attacking-defending/
 
 GPP漏洞：https://cloud.tencent.com/developer/article/1842866
@@ -20,9 +22,13 @@ GPP漏洞：https://cloud.tencent.com/developer/article/1842866
 
 此思路主要针对域控中存在强制NTLM认证漏洞的情况（打印机回调函数、petitpotam等相关漏洞，此漏洞也是potato系列提权的核心。之前微软回应不对此漏洞进行修复，但是在今年4月的补丁中，对相关漏洞进行了修复）。去年爆出的petitpotam漏洞中，通过MS-EFSRPC的越权回调，强制域控和CA进行认证，并在其中做ntlm中继，实现对域控权限的获取。
 
+ADCS relay：https://pentestlab.blog/2021/09/14/petitpotam-ntlm-relay-to-ad-cs/
+
+
 ## 三、通过抓取域管登陆服务器的hash
 
 此思路主要是针对系统运维人员没有对域管账户登陆的服务器进行收敛，随意在服务器上使用高权限账户，并不清理服务器上缓存的hash，导致攻击者能直接在其他服务器中获取到高权限账户的hash，从而实现域内提权，获取域控制器权限。该方法主要的攻击思路就是PTH，通过横向移动+密码抓取，不断获取服务器权限，再在服务器中抓取hash，用新的hash继续PTH获取其他服务器权限，直到抓取到高权限hash为止。
+
 
 ## 四、通过运维人员不恰当的密码管理
 
@@ -36,9 +42,15 @@ GPP漏洞：https://cloud.tencent.com/developer/article/1842866
 
 与域控强相关的系统中，最容易想到的就是Exchange服务器。Exchange服务器具有域控的DCSync权限，通过Exchange的RCE控制Exchange后，也可以直接dump域控中域管的hash，实现对域控的控制。如果获取不到Exchange权限，也可以通过Exchange的http 的NTLM中继到域控实现域内权限提升（PrivExchange，但是目前已经修复）。DNS服务器中的DNS admin用户也能让域控远程加载自定义的dll文件，从而实现对域控的控制。
 
+PrivExchange原理：https://dirkjanm.io/abusing-exchange-one-api-call-away-from-domain-admin/
+PrivExchange的github地址：https://github.com/dirkjanm/PrivExchange
+
+
 ## 六、通过获取域控制器的localgroup中特权组成员的权限来获取域控权限
 
 企业为了保证域控中的最小权限原则，通常会在域控制器的localgroup中授予一些域用户特殊权限，方便不同人员使用域中的不同能力。比如localgroup中的backup operators组中的成员能对域控进行备份，也就能直接导出域控的SAM数据库，从而获取域管hash。
+
+
 
 ## 七、通过委派来获取域控权限
 
