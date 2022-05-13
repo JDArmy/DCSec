@@ -4,7 +4,7 @@
 
 ## 一、通过域控相关的漏洞
 
-此思路主要针对域控补丁没有打完整，导致能直接进行域提权漏洞攻击。一般出现在一些安全情报偏弱、补丁更新不频繁的中小公司或者大公司的测试环境。主要是通过MS14068、zerologon、nopac等相关漏洞来直接攻击域控，或者在域控的SYSVOL目录中的文件或者组策略文件直接获取域管密码来获取域控权限（KB2962486补丁是对此漏洞的修补，且windows server 2012已经默认修复）。
+此思路主要针对域控补丁没有打完整，导致能直接进行域提权漏洞攻击。一般出现在一些安全情报偏弱、补丁更新不频繁的中小公司或者大公司的测试环境。主要是通过MS14068、zerologon、nopac等相关漏洞来直接攻击域控，或者在域控的SYSVOL目录中的文件或者组策略文件直接获取域管密码来获取域控权限（KB2962486补丁是对此漏洞的修补，且windows server 2012已经默认修复）。ADCS域提权漏洞（CVE-2022–26923）
 
 MS14068：https://www.anquanke.com/post/id/172900
 
@@ -17,6 +17,8 @@ NoPAC检测工具的github地址：https://github.com/knightswd/NoPacScan
 zerologon漏洞相关：https://blog.zsec.uk/zerologon-attacking-defending/
 
 GPP漏洞：https://cloud.tencent.com/developer/article/1842866
+
+ADCS域提权漏洞：https://research.ifcr.dk/certifried-active-directory-domain-privilege-escalation-cve-2022-26923-9e098fe298f4
 
 ## 二、通过域内的中继
 
