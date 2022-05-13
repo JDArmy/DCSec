@@ -12,7 +12,7 @@
 - [通过域控运维堡垒机](#通过域控运维堡垒机)
 - [通过运维人员的个人主机](#通过运维人员的个人主机)
 - [通过与域控相关的web服务器](#通过与域控相关的web服务器)
-- [通过微软Azure AD](#通过微软Azure AD)
+- [通过微软AzureAD](#通过微软AzureAD)
 
 ## 一、通过域控相关的漏洞
 
@@ -95,7 +95,7 @@ Backup Operators组成员权限到域控权限：https://github.com/mpgn/BackupO
 
 此攻击思路可以参考ateam的从xxe到域控：https://blog.ateam.qianxin.com/post/zhe-shi-yi-pian-bu-yi-yang-de-zhen-shi-shen-tou-ce-shi-an-li-fen-xi-wen-zhang/#4-xxe-to-%E5%9F%9F%E6%8E%A7
 
-## 十一、通过微软Azure AD
+## 十一、通过微软AzureAD
 
 如果企业中有配置微软的Azure AD，并且开启密码hash同步（PHS），则获取到Azure AD连接同步账户，就能直接DC SYNC到整个域的hash。
 
