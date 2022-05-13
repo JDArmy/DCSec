@@ -83,5 +83,10 @@ Backup Operators组成员权限到域控权限：https://github.com/mpgn/BackupO
 
 此攻击思路可以参考ateam的从xxe到域控：https://blog.ateam.qianxin.com/post/zhe-shi-yi-pian-bu-yi-yang-de-zhen-shi-shen-tou-ce-shi-an-li-fen-xi-wen-zhang/#4-xxe-to-%E5%9F%9F%E6%8E%A7
 
+## 十一、通过微软Azure AD
+
+如果企业中有配置微软的Azure AD，并且开启密码hash同步（PHS），则获取到Azure AD连接同步账户，就能直接DC SYNC到整个域的hash。
+
+Hacking Azure AD via Active Directory：https://troopers.de/downloads/troopers19/TROOPERS19_AD_Im_in_your_cloud.pdf
 
 
