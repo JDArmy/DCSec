@@ -89,4 +89,5 @@ Backup Operators组成员权限到域控权限：https://github.com/mpgn/BackupO
 
 Hacking Azure AD via Active Directory：https://troopers.de/downloads/troopers19/TROOPERS19_AD_Im_in_your_cloud.pdf
 
+azuread connect for redteam：https://blog.xpnsec.com/azuread-connect-for-redteam/
 
